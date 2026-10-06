@@ -11,7 +11,11 @@
     X-Content-Type-Options = "nosniff"
     X-XSS-Protection = "1; mode=block"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+# Old single-page catch-all removed: it served the homepage for every
+# unknown URL, which Google treats as duplicate "soft 404" pages.
+# Unknown URLs now get 404.html.
